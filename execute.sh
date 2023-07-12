@@ -37,27 +37,27 @@ done
 
 if [[ $op == "up" ]]; then
     if [[ $from == "local" ]]; then
-        sudo docker-compose -f docker-compose-local.yml up --build
+        sudo -S docker-compose -f docker-compose-local.yml up --build  <<< "$pswd"
     elif [[ $from == "remote" ]]; then
-        sudo docker-compose -f docker-compose-remote.yml up
+        sudo -S docker-compose -f docker-compose-remote.yml up <<< "$pswd"
     else
         echo "FROM parameter is invalid"
         exit 1
     fi
 elif [[ $op == "down" ]]; then
     if [[ $from == "local" ]]; then
-        sudo docker-compose -f docker-compose-local.yml down
+        sudo -S docker-compose -f docker-compose-local.yml down <<< "$pswd"
     elif [[ $from == "remote" ]]; then
-        sudo docker-compose -f docker-compose-remote.yml down
+        sudo -S docker-compose -f docker-compose-remote.yml down <<< "$pswd"
     else
         echo "FROM parameter is invalid"
         exit 1
     fi
 elif [[ $op == "stop" ]]; then
     if [[ $from == "local" ]]; then
-        sudo docker-compose -f docker-compose-local.yml stop
+        sudo -S docker-compose -f docker-compose-local.yml stop <<< "$pswd"
     elif [[ $from == "remote" ]]; then
-        sudo docker-compose -f docker-compose-remote.yml stop
+        sudo -S docker-compose -f docker-compose-remote.yml stop <<< "$pswd"
     else
         echo "FROM parameter is invalid"
         exit 1
